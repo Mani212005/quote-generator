@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Quote Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .quote-box {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      max-width: 600px;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+
+    .quote-box.show {
+      opacity: 1;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .footer-link {
+      margin-top: 30px;
+      font-size: 0.9rem;
+    }
+
+    .footer-link a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .footer-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quote-box" id="quoteBox">
+    Click the button to get inspired!
+  </div>
+
+  <button onclick="generateQuote()">New Quote</button>
+
+  <div class="footer-link">
+    Visit our web app 👉 <a href="https://yourwebapp.com" target="_blank">yourwebapp.com</a>
+  </div>
+
+  <script>
+    const quotes = [
+      "The only way to do great work is to love what you do. – Steve Jobs",
+      "Life is what happens when you're busy making other plans. – John Lennon",
+      "Success is not final, failure is not fatal: It is the courage to continue that counts. – Winston Churchill",
+      "You miss 100% of the shots you don't take. – Wayne Gretzky",
+      "Whether you think you can or you think you can’t, you’re right. – Henry Ford",
+      "Believe you can and you're halfway there. – Theodore Roosevelt"
+    ];
+
+    const quoteBox = document.getElementById("quoteBox");
+
+    function generateQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      const newQuote = quotes[randomIndex];
+
+      quoteBox.classList.remove("show");
+      setTimeout(() => {
+        quoteBox.textContent = newQuote;
+        quoteBox.classList.add("show");
+      }, 200);
+    }
+
+    // Initial quote on load
+    window.onload = generateQuote;
+  </script>
+
+</body>
+</html>
